@@ -70,3 +70,16 @@ INSTALLED_APPS = [
 ]
 ```
 
+# Iniciar servidor
+
+Desde dentro de la carpeta del proyecto (`tutorialproject`):
+
+```
+python manage.py runserver
+```
+
+Es un servidor de desarrollo, lo que significa:
+
+- NO USAR EN PRODUCCIÓN: no es un servidor optimizado en materia de seguridad para usar en un entorno de producción
+- No es necesario reiniciar para ver cambios
+
