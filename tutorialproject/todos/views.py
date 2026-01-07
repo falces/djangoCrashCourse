@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, HttpResponseNotAllowed
 
 
 def hello_world_view(request):
@@ -26,11 +25,13 @@ def hello_search(request):
 def redirect_to_html(request):
     return redirect('hello_html')
 
-@csrf_exempt
 def post_example(request):
     if request.method == 'POST':
         name = request.POST.get('name', 'x')
         age = request.POST.get('age', 'x')
         job = request.POST.get('job', 'x')
         return HttpResponse(f"Name: {name}, Age: {age}, Job: {job}")
-    return HttpResponse("Please send a POST request.")
+    return HttpResponseNotAllowed(['POST'])
+
+def submit_example(request):
+    return render(request, 'submit.html')

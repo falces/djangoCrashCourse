@@ -9,5 +9,6 @@ urlpatterns = [
     path('add/<int:number1>/<int:number2>', views.hello_add, name='hello_add'),
     path('search', views.hello_search, name='hello_search'),
     path('redirectToHTML', views.redirect_to_html, name='redirect_to_html'),
-    path('postExample', views.post_example, name='post_example'),
+    path('postexample', views.post_example, name='post_example'),
+    path('add', views.submit_example, name='submit_example'),
 ]
