@@ -10,5 +10,6 @@ urlpatterns = [
     path('search', views.hello_search, name='hello_search'),
     path('redirectToHTML', views.redirect_to_html, name='redirect_to_html'),
     path('postexample', views.post_example, name='post_example'),
-    path('add', views.submit_example, name='submit_example'),
+    path('basicform', views.basic_form, name='basic_form'),
+    path('djangoform', views.django_form, name='django_form'),
 ]
