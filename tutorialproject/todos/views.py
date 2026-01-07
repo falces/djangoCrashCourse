@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotAllowed
 from .forms import PersonForm, TodoForm
-from .models import Todos
+from .models import Todos, Person
 
 
 def hello_world_view(request):
@@ -74,18 +74,18 @@ def person_details(
     request,
     person_id,
 ):
-    person = Person.objects.get(id=person_id).first()
+    person = Person.objects.get(id=person_id)
     
     return render(request, 'person_details.html', {'person': person})
 
 def delete_todo(request, todo_id):
-    todo = Todos.objects.filter(id=todo_id).first()
+    todo = Todos.objects.filter(id=todo_id)
     todo.delete()
 
     return HttpResponse("Todo deleted")
 
 def toogle_todo_done(request, todo_id):
-    todo = Todos.objects.filter(id=todo_id).first()
+    todo = Todos.objects.filter(id=todo_id)
     todo.done = not todo.done
     todo.save()
     return HttpResponse("Todo toggled")
