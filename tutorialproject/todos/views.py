@@ -47,3 +47,12 @@ def basic_form(request):
 def django_form(request):
     form = PersonForm()
     return render(request, 'django_form.html', {'form': form})
+
+def template_view(request):
+    context = {
+        'name': "Javi",
+        "age": 50,
+        "job": "Developer",
+        "skills": ["Python", "JavaScript", "PHP"],
+    }
+    return render(request, 'template.html', context)
