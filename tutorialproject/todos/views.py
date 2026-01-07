@@ -69,3 +69,23 @@ def todos_view(request):
         form = TodoForm()
         todos = Todos.objects.all()
         return render(request, 'todos.html', {'form': form, 'todos': todos})
+
+def person_details(
+    request,
+    person_id,
+):
+    person = Person.objects.get(id=person_id).first()
+    
+    return render(request, 'person_details.html', {'person': person})
+
+def delete_todo(request, todo_id):
+    todo = Todos.objects.filter(id=todo_id).first()
+    todo.delete()
+
+    return HttpResponse("Todo deleted")
+
+def toogle_todo_done(request, todo_id):
+    todo = Todos.objects.filter(id=todo_id).first()
+    todo.done = not todo.done
+    todo.save()
+    return HttpResponse("Todo toggled")

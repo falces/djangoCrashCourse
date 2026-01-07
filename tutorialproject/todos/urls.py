@@ -14,4 +14,7 @@ urlpatterns = [
     path('djangoform', views.django_form, name='django_form'),
     path('templateview', views.template_view, name='template_view'),
     path('todos', views.todos_view, name='todos_view'),
+    path('person/<int:person_id>', views.person_details, name='person_details'),
+    path('delete/<int:todo_id>', views.delete_todo, name='delete_todo'),
+    path('toggle/<int:todo_id>', views.toogle_todo_done, name='toggle_todo_done'),
 ]
