@@ -1,4 +1,5 @@
 from django import forms
+from .models import Todos
 
 
 class PersonForm(forms.Form):
@@ -15,3 +16,12 @@ class PersonForm(forms.Form):
         required=False,
         label='Trabajo',
     )
+    
+class TodoForm(forms.ModelForm):
+    
+    class Meta:
+        model = Todos
+        fields = ['title', 'description', 'done', 'deadline', 'priority']
+        widgets = {
+            'deadline': forms.DateInput(attrs={'type': 'date'}),
+        }

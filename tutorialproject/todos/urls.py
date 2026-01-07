@@ -13,4 +13,5 @@ urlpatterns = [
     path('basicform', views.basic_form, name='basic_form'),
     path('djangoform', views.django_form, name='django_form'),
     path('templateview', views.template_view, name='template_view'),
+    path('todos', views.todos_view, name='todos_view'),
 ]

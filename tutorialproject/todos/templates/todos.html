@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Todo List{% endblock %}
+
+{% block content %}
+  <h1>Todo List</h1>
+  <ul>
+    {% for todo in todos %}
+      <li>{{ todo.id }} - {{ todo.title }} is {% if todo.done %}Completed{% else %}Pending{% endif %}</li>
+    {% empty %}
+      <li>No todos available.</li>
+    {% endfor %}
+  </ul>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Refresh</button>
+  </form>
+{% endblock %}

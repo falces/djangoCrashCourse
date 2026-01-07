@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotAllowed
-from .forms import PersonForm
+from .forms import PersonForm, TodoForm
+from .models import Todos
 
 
 def hello_world_view(request):
@@ -56,3 +57,15 @@ def template_view(request):
         "skills": ["Python", "JavaScript", "PHP"],
     }
     return render(request, 'template.html', context)
+
+def todos_view(request):
+    if request.method == 'POST':
+        todo_form = TodoForm(request.POST)
+        
+        if todo_form.is_valid():
+            todo = todo_form.save()
+            return HttpResponse(f"Todo created with ID: {todo.id}")
+    else:
+        form = TodoForm()
+        todos = Todos.objects.all()
+        return render(request, 'todos.html', {'form': form, 'todos': todos})
